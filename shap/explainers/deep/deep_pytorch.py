@@ -247,7 +247,7 @@ class PyTorchDeepExplainer(Explainer):
                         orig_inp=x,
                         bg_data=data)
                     for l in range(len(self.interim_inputs_shape)):
-                        phis[l][j] = phis_j[l] 
+                        phis[l][j] = phis_j[l].cpu().numpy()
                 else:
                     #combine the multipliers with the difference from reference
                     # to get the final attributions
@@ -259,7 +259,7 @@ class PyTorchDeepExplainer(Explainer):
                         bg_data=[x.detach().cpu().numpy() for x in bg_data])
                     # assign the attributions to the right part of the output arrays
                     for l in range(len(X)):
-                        phis[l][j] = phis_j[l] 
+                        phis[l][j] = phis_j[l].cpu().numpy()
             output_phis.append(phis[0] if not self.multi_input else phis)
         # cleanup; remove all gradient handles
         for handle in handles:
