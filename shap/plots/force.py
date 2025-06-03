@@ -7,11 +7,11 @@ import io
 import string
 import json
 import random
-from IPython.core.display import display, HTML
+from IPython.core.display import HTML
+from IPython.display import display
 from IPython import get_ipython
 import base64
 import numpy as np
-import scipy.cluster
 import sys
 if sys.version_info[0] >= 3:
   from collections.abc import Sequence
